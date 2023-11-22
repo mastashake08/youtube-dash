@@ -1,5 +1,5 @@
 import { MPD } from '@mastashake08/dash-manifest-creator'
-export default class YoutubeDash {
+class YoutubeDash {
   startNumber;
   livestream;
   constructor (token) {
@@ -159,4 +159,8 @@ export default class YoutubeDash {
     }
     this.startNumber = this.startNumber + 1
   }
+}
+
+export {
+  YoutubeDash
 }

@@ -1,6 +1,6 @@
 {
   "name": "@mastashake08/youtube-dash",
-  "version": "1.0.0-alpha",
+  "version": "1.0.1-alpha",
   "description": "Manage and stream YouTube livestreams in the browser.",
   "author": "Jyrone Parker <jyrone.parker@gmail.com>",
   "main": "index.js",

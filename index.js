@@ -1,3 +1,5 @@
-module.exports = function () {
-  return 'youtube-dash';
-};
+import { YoutubeDash } from './classes/YoutubeDash'
+
+export {
+  YoutubeDash
+}
