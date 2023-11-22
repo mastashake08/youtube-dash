@@ -1,9 +1,10 @@
 {
-  "name": "npm-package-template",
+  "name": "@mastashake08/youtube-dash",
   "version": "1.0.0-alpha",
-  "description": "npm package template.",
+  "description": "Manage and stream YouTube livestreams in the browser.",
   "author": "Jyrone Parker <jyrone.parker@gmail.com>",
   "main": "index.js",
+  "module": "index.js",
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint --ignore-path .gitignore .",
@@ -16,13 +17,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mastashake08/npm-package-template"
+    "url": "https://github.com/mastashake08/youtube-dash"
   },
   "bugs": {
-    "url": "https://github.com/mastashake08/npm-package-template/issues"
+    "url": "https://github.com/mastashake08/youtube-dash/issues"
   },
   "keywords": [
-    "npm-package-template"
+    "youtube-dash"
   ],
   "dependencies": {},
   "devDependencies": {
