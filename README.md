@@ -36,6 +36,13 @@ yt.createNewLiveStream(title)
 
 //readable video stream
 readable.pipeThru(yt.uploadStream()).pipeTo(writable)
+
+//using sync blobs with MediaRecorder gathering data every 2 seconds
+mediaRecorder.start(2000);
+mediaRecorder.ondataavailable = (e) => {
+    const file = new File([e.data], "video.webm");
+    yt.uploadDashData(file)
+};
 ```
 
 
