@@ -1,12 +1,12 @@
 # youtube-dash
 
-[![NPM](https://nodei.co/npm/youtube-dash.png)](https://nodei.co/npm/youtube-dash/)
+[![NPM](https://nodei.co/npm/@mastashake08/youtube-dash.png)](https://nodei.co/npm/@mastashake08/youtube-dash/)
 
-[![NPM version](https://img.shields.io/npm/v/youtube-dash.svg)](https://www.npmjs.com/package/youtube-dash)
+[![NPM version](https://img.shields.io/npm/v/@mastashake08/youtube-dash.svg)](https://www.npmjs.com/package/@mastashake08/youtube-dash)
 [![Build Status](https://travis-ci.org/mastashake08/youtube-dash.svg?branch=master)](https://travis-ci.org/mastashake08/youtube-dash)
 [![Coverage Status](https://coveralls.io/repos/github/mastashake08/youtube-dash/badge.svg?branch=master)](https://coveralls.io/github/mastashake08/youtube-dash?branch=master)
 
-npm package template.
+NPM package for managing broadcasts and livestreaming from the browser using the Youtube Livestreaming API via DASH. Created and maintained by [Jyrone Parker](https://jyroneparker.com)
 
 ## Installation
 
@@ -17,78 +17,27 @@ git clone https://github.com/mastashake08/youtube-dash.git
 cd youtube-dash
 ```
 
+Use via NPM
+```sh
+npm i @mastashake08/youtube-dash
+```
+
 ## Usage
 
-Rename package (use [npm-package-name-checker](https://mastashake08.org/npm-package-name-checker/) to check for name availability):
+Import the package in your Javascript application.
 
-```sh
-# replace $NAME with your package name
-git grep -l youtube-dash | xargs sed -i '' -e "s/youtube-dash/$NAME/g"
+```javascript
+import { YoutubeDash } from '@mastashake08/youtube-dash'
+
+const yt = new YoutubeDash(api_token)
+
+const title = "Getting Started With Screen Recorder"
+yt.createNewLiveStream(title)
+
+//readable video stream
+readable.pipeThru(yt.uploadStream()).pipeTo(writable)
 ```
 
-Manually update the files:
-
-- [ ] LICENSE
-- [ ] README.md
-- [ ] package.json
-
-Reinitialize Git repository:
-
-```sh
-rm -rf .git
-git init
-```
-
-Install package dependencies:
-
-```sh
-npm install
-```
-
-Make first commit:
-
-```sh
-git commit -am "feat: initial commit"
-```
-
-## Testing
-
-Run tests:
-
-```sh
-npm test
-```
-
-Run tests in watch mode:
-
-```sh
-npm run test:watch
-```
-
-Run tests with coverage:
-
-```sh
-npm run test:coverage
-```
-
-View coverage in browser:
-
-```sh
-npm run test:coverage:report
-open coverage/index.html
-```
-
-Lint files:
-
-```sh
-npm run lint
-```
-
-Fix lint errors:
-
-```sh
-npm run lint:fix
-```
 
 ## Release
 
@@ -108,10 +57,7 @@ npm pack --dry-run
 
 ## Support
 
-- [Patreon](https://b.remarkabl.org/patreon)
-- [Ko-fi](https://b.remarkabl.org/ko-fi)
-- [Liberapay](https://b.remarkabl.org/liberapay)
-- [Teepsring](https://b.remarkabl.org/teespring)
+- [Patreon](https://patreon.com/mastashake08)
 
 ## License
 

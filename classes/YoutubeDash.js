@@ -36,12 +36,12 @@ class YoutubeDash {
   }
   //
 
-  async createNewLiveStream () {
+  async createNewLiveStream (title = "Getting Started With Screen Recorder") {
     try {
 
       let data = {
         "snippet": {
-          "title": "Getting Started With Screen Recorder"
+          "title": title
         },
         "cdn": {
           "frameRate": "variable",
@@ -52,8 +52,8 @@ class YoutubeDash {
       const headers = {
         Authorization: `Bearer ${this.token}`
       }
-      const title = await prompt('Give your stream a title!')
-      this.broadcast = await this.createBroadcast(title)
+      const broadCastTitle = prompt('Give your broadcast a title!')
+      this.broadcast = await this.createBroadcast(broadCastTitle)
       this.livestream = await this.makeRequest('https://www.googleapis.com/youtube/v3/liveStreams?part=cdn&part=snippet', 'POST', JSON.stringify(data), headers)
       this.bind = await this.bindBroadCast(this.broadcast.id, this.livestream.id)
       sessionStorage.setItem("cid", this.livestream.cdn.ingestionInfo.ingestionAddress)
@@ -133,15 +133,28 @@ class YoutubeDash {
     }
 
   }
-  async uploadDashData (filename, data) {
-    const url = sessionStorage.cid+filename
+
+  uploadStream() {
+    return new TransformStream({
+      transform(chunk, controller) {
+        const file = new File([chunk], "file.webm")
+        this.uploadDashData(file)
+        controller.enqueue(chunk);
+      },
+    });
+  }
+  
+  async uploadDashData (data) {
+    const url = sessionStorage.cid+data.name
     const formData  = new FormData()
     formData.append('file', data)
-    formData.append('url', url)
+    //formData.append('url', url)
 
     const headers = {
+      Authorization: `Bearer ${this.token}`
     }
-    await this.makeRequest('https://screen-recorder-micro.jcompsolu.com/api/stream-to-youtube', 'POST', formData, headers)
+    //await this.makeRequest('https://screen-recorder-micro.jcompsolu.com/api/stream-to-youtube', 'POST', formData, headers)
+    await this.makeRequest(url, 'PUT', headers)
   }
   async createDashManifest(initVideo, filename, cid) {
     if(this.startNumber === 1) {
